@@ -1,0 +1,8 @@
+main {
+  padding: 20px;
+}
+
+.main__left textarea {
+  width: 100%;
+  height: 100vh;
+}
