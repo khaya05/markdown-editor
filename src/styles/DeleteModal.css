@@ -8,7 +8,7 @@
   place-items: center;
   visibility: hidden;
   z-index: -10;
-  background: hsla(225, 9%, 9%, 0.5);
+  background: var(--modal-overlay);
 }
 
 .modal-overlay.open-modal {
@@ -17,7 +17,7 @@
 }
 
 .modal-container {
-  background: white;
+  background: var(--main-bg-color);
   border-radius: 4px;
   max-width: 21.44em;
   height: 13.6em;

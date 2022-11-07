@@ -6,6 +6,8 @@ import saveIcon from './icon-save.svg';
 import logo from './logo.svg';
 import light from './icon-light-mode.svg';
 import dark from './icon-dark-mode.svg';
+import showPreviewIcon from './icon-show-preview.svg';
+import hidePreviewIcon from './icon-hide-preview.svg';
 
 export {
   barsIcon,
@@ -16,4 +18,6 @@ export {
   logo,
   light,
   dark,
+  showPreviewIcon,
+  hidePreviewIcon,
 };

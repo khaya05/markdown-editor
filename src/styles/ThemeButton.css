@@ -17,7 +17,7 @@
   position: absolute;
   cursor: pointer;
   inset: 0;
-  background-color: var(--grey);
+  background-color: var(--gray-light-500);
   -webkit-transition: 0.4s;
   transition: 0.4s;
 }

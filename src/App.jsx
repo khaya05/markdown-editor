@@ -12,7 +12,7 @@ function app() {
           className={`main__main-right ${showAside ? 'translate-main' : ''}`}
         >
           <Navbar />
-          {/* <Main /> */}
+          <Main />
           {showModal && <DeleteModal />}
         </div>
       </div>
