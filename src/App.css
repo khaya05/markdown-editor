@@ -1,1 +1,9 @@
-rfce
+.translate-main-in {
+  padding-left: 250px;
+  transition: all 400ms;
+}
+.translate-main-out {
+  padding-left: 0;
+  transition: all 400ms;
+}
+ 

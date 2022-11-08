@@ -2,6 +2,8 @@ import React from 'react';
 import ReactMarkdown from 'react-markdown';
 import { hidePreviewIcon, showPreviewIcon } from '../assets';
 import { useGlobalContext } from '../context/context';
+import { CSSTransition } from 'react-transition-group';
+
 import '../styles/Main.css';
 
 function Main() {
@@ -14,16 +16,6 @@ function Main() {
     setShowInput,
     screenWidth,
   } = useGlobalContext();
-  const markdownClasses = [
-    'main__left',
-    `${showPreview ? 'hide-input' : 'show-input'}`,
-  ];
-  const previewClasses = [
-    'react-markdown-container',
-    `${showPreview ? 'show-preview' : 'hide-preview'}`,
-  ];
-
-  console.log(screenWidth);
 
   const handleMarkdownClick = () => {
     setShowInput(false);
@@ -37,12 +29,21 @@ function Main() {
     }
   };
 
-  console.log(showPreview);
-
   return (
     <main>
-      {showInput && (
-        <div className={markdownClasses.join(' ')}>
+      <CSSTransition
+        in={showInput}
+        timeout={400}
+        mountOnEnter
+        unmountOnExit
+        classNames={{
+          enter: '',
+          enterActive: 'show-input',
+          exit: '',
+          exitActive: 'hide-input',
+        }}
+      >
+        <div className={'main__left'}>
           <div className="section-label">
             <p>markdown</p>
             <button type="button" onClick={handleMarkdownClick}>
@@ -57,9 +58,20 @@ function Main() {
             />
           </form>
         </div>
-      )}
+      </CSSTransition>
 
-      {showPreview && (
+      <CSSTransition
+        in={showPreview}
+        timeout={400}
+        mountOnEnter
+        unmountOnExit
+        classNames={{
+          enter: '',
+          enterActive: 'show-preview',
+          exit: '',
+          exitActive: 'hide-preview',
+        }}
+      >
         <div className="main__right">
           <div className="section-label">
             <p>preview</p>
@@ -71,11 +83,11 @@ function Main() {
               <span>hide preview</span>
             </button>
           </div>
-          <div className={previewClasses.join(' ')}>
+          <div className={'react-markdown-container'}>
             <ReactMarkdown>{markdownInput}</ReactMarkdown>
           </div>
         </div>
-      )}
+      </CSSTransition>
     </main>
   );
 }

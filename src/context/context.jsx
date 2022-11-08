@@ -13,6 +13,7 @@ const AppProvider = ({ children }) => {
   const [showPreview, setShowPreview] = useState(false);
   const [showInput, setShowInput] = useState(true);
   const [screenWidth, setScreenWidth] = useState(null);
+  const [theme, setTheme] = useState('light-mode')
 
   // https://www.pluralsight.com/guides/re-render-react-component-on-window-resize
 
