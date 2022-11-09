@@ -9,7 +9,7 @@ import {
 
 import { doc, updateDoc } from 'firebase/firestore';
 import { useGlobalContext } from '../context/context';
-import { db } from '../firebase-config';
+import { db } from '../../firebase-config';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

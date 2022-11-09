@@ -1,7 +1,7 @@
 import { collection, onSnapshot } from 'firebase/firestore';
 import { useState, useEffect } from 'react';
 import { createContext, useContext } from 'react';
-import { db } from '../firebase-config';
+import { db } from '../../firebase-config';
 
 const AppContext = createContext();
 const filesCollectionRef = collection(db, 'files');
