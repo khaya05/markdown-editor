@@ -17,7 +17,8 @@ aside {
   transform: translateX(-100%);
   background-color: var(--dark-900);
   transition: all 500ms;
-  font-family: 'Roboto';
+  /* font-family: 'Roboto'; */
+  z-index: 2;
 }
 
 .aside___container {
@@ -92,11 +93,9 @@ aside ul {
 }
 
 .aside__file {
-  /* border: 1px solid orange; */
   list-style: none;
   display: flex;
   align-items: flex-start;
-  /* justify-content: center; */
   height: 38px;
   font-family: 'Roboto';
   font-style: normal;

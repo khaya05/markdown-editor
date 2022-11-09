@@ -13,7 +13,7 @@ const AppProvider = ({ children }) => {
   const [showPreview, setShowPreview] = useState(false);
   const [showInput, setShowInput] = useState(true);
   const [screenWidth, setScreenWidth] = useState(null);
-  const [theme, setTheme] = useState('light-mode')
+  const [preferrersLightMode, setPreferrersLightMode] = useState(true);
 
   // https://www.pluralsight.com/guides/re-render-react-component-on-window-resize
 
@@ -43,11 +43,19 @@ const AppProvider = ({ children }) => {
     setScreenWidth(window.innerWidth);
   }, []);
 
+  // always show preview on larger devices
   useEffect(() => {
     if (screenWidth && screenWidth >= 768) {
       setShowPreview(true);
     }
   }, [screenWidth]);
+
+  // set light-theme as default
+  useEffect(() => {
+    document.documentElement.className = preferrersLightMode
+      ? 'light-mode'
+      : 'dark-mode';
+  }, [preferrersLightMode]);
 
   // const []
   return (
@@ -61,6 +69,8 @@ const AppProvider = ({ children }) => {
         showPreview,
         showInput,
         screenWidth,
+        preferrersLightMode,
+        setPreferrersLightMode,
         setShowInput,
         setShowPreview,
         setShowModal,

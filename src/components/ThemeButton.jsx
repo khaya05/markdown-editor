@@ -3,9 +3,11 @@ import { useGlobalContext } from '../context/context';
 import '../styles/ThemeButton.css';
 
 const ThemeButton = () => {
-  const { darkMode, setDarkMode } = useGlobalContext();
+  const { preferrersLightMode, setPreferrersLightMode } = useGlobalContext();
 
-  const toggleDarkMode = () => {};
+  const toggleDarkMode = () => {
+    setPreferrersLightMode((oldTheme) => !oldTheme);
+  };
 
   return (
     <div className="theme-toggle-container">
@@ -14,7 +16,11 @@ const ThemeButton = () => {
       </div>
       <div>
         <label className="switch">
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            checked={preferrersLightMode}
+            onChange={toggleDarkMode}
+          />
           <span className="slider round"></span>
         </label>
       </div>
