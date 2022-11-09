@@ -2,7 +2,7 @@ import { deleteDoc, doc } from 'firebase/firestore';
 import { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import { useGlobalContext } from '../context/context';
-import { db } from '../../firebase-config';
+import { db } from '../firebase-config';
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';

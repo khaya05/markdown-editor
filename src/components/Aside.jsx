@@ -2,7 +2,7 @@ import { fileIcon, logo } from '../assets';
 import { useGlobalContext } from '../context/context';
 import { ThemeButton } from '../components';
 import { addDoc, collection } from 'firebase/firestore';
-import { db } from '../../firebase-config';
+import { db } from '../firebase-config';
 import moment from 'moment';
 
 import '../styles/Aside.css';
