@@ -32,9 +32,6 @@ function Aside() {
     const currentFile = files.find((file) => file.id === id);
     const currentFileIndex = files.indexOf(currentFile);
     setIndex(currentFileIndex);
-
-    console.log(currentFileIndex);
-    console.log(index);
   };
 
   return (

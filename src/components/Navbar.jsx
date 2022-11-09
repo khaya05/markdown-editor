@@ -53,7 +53,6 @@ function Navbar() {
 
   const saveFile = async () => {
     const file = doc(db, 'files', currentFile.id);
-    console.log(file);
     updateDoc(file, { name: filename, contents: fileContents });
     notify();
   };
