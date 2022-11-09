@@ -1,14 +1,19 @@
+import { collection, onSnapshot } from 'firebase/firestore';
 import { useState, useEffect } from 'react';
 import { createContext, useContext } from 'react';
-import { content } from '../contents/data';
+import { db } from '../firebase-config';
 
 const AppContext = createContext();
+const filesCollectionRef = collection(db, 'files');
 
 const AppProvider = ({ children }) => {
-  const [markdownInput, setMarkdownInput] = useState(content);
+  const [index, setIndex] = useState(0);
+  const [files, setFiles] = useState([]);
+  const [currentFile, setCurrentFile] = useState({});
+  const [filename, setFilename] = useState('');
+  const [fileContents, setFileContents] = useState('');
   const [showAside, setShowAside] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
-  const [darkMode, setDarkMode] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
   const [showInput, setShowInput] = useState(true);
@@ -57,27 +62,52 @@ const AppProvider = ({ children }) => {
       : 'dark-mode';
   }, [preferrersLightMode]);
 
-  // const []
+  // firebase
+
+  useEffect(() => {
+    const getFiles = () => {
+      onSnapshot(filesCollectionRef, (data) => {
+        setFiles(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      });
+    };
+    getFiles();
+  }, []);
+
+  useEffect(() => {
+    if (files) {
+      setCurrentFile(files[index]);
+    }
+  }, [files, index]);
+
+  useEffect(() => {
+    setFilename(currentFile?.name);
+    setFileContents(currentFile?.contents);
+  }, [currentFile]);
+
   return (
     <AppContext.Provider
       value={{
-        markdownInput,
         showAside,
         isEditing,
-        darkMode,
         showModal,
         showPreview,
         showInput,
         screenWidth,
         preferrersLightMode,
+        filename,
+        fileContents,
+        index,
+        currentFile,
+        files,
+        setIndex,
+        setFilename,
+        setFileContents,
         setPreferrersLightMode,
         setShowInput,
         setShowPreview,
         setShowModal,
-        setDarkMode,
         setShowAside,
         setIsEditing,
-        setMarkdownInput,
       }}
     >
       {children}

@@ -8,13 +8,12 @@ import '../styles/Main.css';
 
 function Main() {
   const {
-    markdownInput,
-    setMarkdownInput,
     showPreview,
     setShowPreview,
     showInput,
     setShowInput,
     screenWidth,
+    fileContents,setFileContents
   } = useGlobalContext();
 
   const handleMarkdownClick = () => {
@@ -28,6 +27,12 @@ function Main() {
       setShowPreview(false);
     }
   };
+
+  const changeFileContents = (e) => {
+    setFileContents(e.target.value)
+
+    
+  }
 
   return (
     <main>
@@ -53,8 +58,8 @@ function Main() {
           </div>
           <form>
             <textarea
-              value={markdownInput}
-              onChange={(e) => setMarkdownInput(e.target.value)}
+              value={fileContents}
+              onChange={(e) => changeFileContents(e)}
             />
           </form>
         </div>
@@ -84,7 +89,7 @@ function Main() {
             </button>
           </div>
           <div className={'react-markdown-container'}>
-            <ReactMarkdown>{markdownInput}</ReactMarkdown>
+            <ReactMarkdown>{fileContents}</ReactMarkdown>
           </div>
         </div>
       </CSSTransition>
